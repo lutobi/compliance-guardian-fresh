@@ -7,6 +7,7 @@ import { iso27001Framework } from './iso27001-controls'
 import { nistFramework } from './nist-csf-controls'
 import { hipaaFramework } from './hipaa-controls'
 import { iso42001Framework } from './iso42001-controls'
+import { vulnerabilityAssessmentFramework } from './vulnerability-assessment-controls'
 
 export const defaultFrameworks: FrameworkData[] = [
   iso27001Framework,
@@ -15,7 +16,8 @@ export const defaultFrameworks: FrameworkData[] = [
   soc2Framework,
   gdprFramework,
   hipaaFramework,
-  iso42001Framework
+  iso42001Framework,
+  vulnerabilityAssessmentFramework
 ]
 
 function transformFramework(framework: FrameworkData): Framework {

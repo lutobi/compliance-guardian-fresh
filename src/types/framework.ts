@@ -14,3 +14,9 @@ export interface Framework {
   description: string
   controls: Control[]
 }
+
+export interface SelectableFramework {
+  value: string
+  label: string
+  description: string
+}

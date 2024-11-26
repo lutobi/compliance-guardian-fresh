@@ -19,7 +19,8 @@ const navigation = [
       { name: 'Overview', href: '/security' },
       { name: 'Penetration Testing', href: '/security/penetration-testing' },
       { name: 'Vulnerability Management', href: '/security/vulnerabilities' },
-      { name: 'Security Controls', href: '/security/controls' }
+      { name: 'Security Controls', href: '/security/controls' },
+      { name: 'Vulnerability Scanner', href: '/security/scanner' }
     ]
   },
   { name: 'Reports', href: '/reports', icon: Icons.fileText },

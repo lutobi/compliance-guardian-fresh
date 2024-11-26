@@ -8,6 +8,8 @@ import { timeAgo } from '@/utils/date'
 import { AuditEventType } from '@/types/security'
 import LoadingSpinner from '@/components/common/LoadingSpinner'
 import { ErrorAlert } from '@/components/common/ErrorAlert'
+import Link from 'next/link'
+import { ShieldCheck, AlertTriangle, Scan } from 'react-feather'
 
 export function SecurityAuditDashboard() {
   const [selectedEventType, setSelectedEventType] = useState<AuditEventType>()
@@ -110,6 +112,52 @@ export function SecurityAuditDashboard() {
           </div>
         </div>
       </Card>
+
+      {/* Vulnerability Scanner Section */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <Link href="/security/controls">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Security Controls</CardTitle>
+              <ShieldCheck className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">0</div>
+              <p className="text-xs text-muted-foreground">
+                0 controls implemented
+              </p>
+            </CardContent>
+          </Card>
+        </Link>
+        <Link href="/security/vulnerabilities">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Vulnerabilities</CardTitle>
+              <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">0</div>
+              <p className="text-xs text-muted-foreground">
+                0 critical issues
+              </p>
+            </CardContent>
+          </Card>
+        </Link>
+        <Link href="/security/scanner">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Vulnerability Scanner</CardTitle>
+              <Scan className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">2</div>
+              <p className="text-xs text-muted-foreground">
+                Active scans in progress
+              </p>
+            </CardContent>
+          </Card>
+        </Link>
+      </div>
 
       {/* Audit Logs Section */}
       <Card>

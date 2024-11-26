@@ -49,6 +49,11 @@ const sidebarNavItems = [
         href: '/security/vulnerabilities',
         icon: 'warning',
       },
+      {
+        title: 'Vulnerability Scanner',
+        href: '/security/scanner',
+        icon: 'scan',
+      },
     ],
   },
   {

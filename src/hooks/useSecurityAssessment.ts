@@ -3,22 +3,12 @@ import {
   SecurityAssessment,
   AssessmentType,
   AssessmentStatus,
+  CreateAssessmentInput,
 } from '@/types/security'
 
 interface UseSecurityAssessmentOptions {
   type?: AssessmentType
   status?: AssessmentStatus
-}
-
-interface CreateAssessmentInput {
-  name: string
-  description: string
-  type: AssessmentType
-  status: AssessmentStatus
-  start_date: string
-  scope: string[]
-  methodology: string[]
-  assigned_to: string[]
 }
 
 export function useSecurityAssessment(options: UseSecurityAssessmentOptions = {}) {
@@ -50,18 +40,25 @@ export function useSecurityAssessment(options: UseSecurityAssessmentOptions = {}
     mutationFn: async (input: CreateAssessmentInput) => {
       const response = await fetch('/api/security/assessments', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(input), // Send input directly as it matches the API schema
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...input,
+          framework_id: input.framework_id,
+          start_date: new Date().toISOString(),
+        }),
       })
-      
+
       if (!response.ok) {
         const error = await response.json()
         throw new Error(error.message || 'Failed to create assessment')
       }
+
       return response.json()
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['security-assessments'] })
+      queryClient.invalidateQueries(['security-assessments'])
     },
   })
 

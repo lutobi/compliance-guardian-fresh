@@ -14,8 +14,21 @@ export interface SecurityAssessment {
   scope: string[]
   methodology: string[]
   assigned_to: string[]
+  framework_id: string
   created_at: string
   updated_at: string
+}
+
+export interface CreateAssessmentInput {
+  name: string
+  description: string
+  type: AssessmentType
+  status: AssessmentStatus
+  start_date: string
+  scope: string[]
+  methodology: string[]
+  assigned_to: string[]
+  framework_id: string
 }
 
 export interface SecurityFinding {
