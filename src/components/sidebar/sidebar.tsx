@@ -57,6 +57,33 @@ const sidebarNavItems = [
     ],
   },
   {
+    title: 'Compliance',
+    href: '/compliance',
+    icon: 'checkSquare',
+    items: [
+      {
+        title: 'Overview',
+        href: '/compliance',
+        icon: 'layoutDashboard',
+      },
+      {
+        title: 'Monitoring',
+        href: '/compliance/monitoring',
+        icon: 'activity',
+      },
+      {
+        title: 'Policies',
+        href: '/compliance/policies',
+        icon: 'scroll',
+      },
+      {
+        title: 'Audit Logs',
+        href: '/compliance/audit-logs',
+        icon: 'history',
+      },
+    ],
+  },
+  {
     title: 'Assessments',
     href: '/assessments',
     icon: 'clipboard',
@@ -131,7 +158,7 @@ export function Sidebar({ className }: SidebarProps) {
                     )}
                     
                     {/* Submenu */}
-                    {isExpanded && item.items && (
+                    {item.items && (
                       <ul className="mt-1 space-y-1 pl-8">
                         {item.items.map((subItem) => {
                           const isChildActive = pathname === subItem.href

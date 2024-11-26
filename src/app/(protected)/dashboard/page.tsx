@@ -57,6 +57,29 @@ export default function DashboardPage() {
               <p className="text-sm text-muted-foreground">
                 Common tasks and actions
               </p>
+              <div className="mt-4 space-y-3">
+                <Link 
+                  href="/compliance/monitoring" 
+                  className="flex items-center space-x-2 text-sm text-primary hover:underline"
+                >
+                  <Icons.activity className="h-4 w-4" />
+                  <span>View Compliance Monitoring</span>
+                </Link>
+                <Link 
+                  href="/security/vulnerabilities" 
+                  className="flex items-center space-x-2 text-sm text-primary hover:underline"
+                >
+                  <Icons.warning className="h-4 w-4" />
+                  <span>Check Vulnerabilities</span>
+                </Link>
+                <Link 
+                  href="/compliance/audit-logs" 
+                  className="flex items-center space-x-2 text-sm text-primary hover:underline"
+                >
+                  <Icons.history className="h-4 w-4" />
+                  <span>View Audit Logs</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

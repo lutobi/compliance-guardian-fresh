@@ -75,6 +75,33 @@ const sidebarNavItems = [
     icon: 'fileText',
   },
   {
+    title: 'Compliance',
+    href: '/compliance',
+    icon: 'checkSquare',
+    items: [
+      {
+        title: 'Overview',
+        href: '/compliance',
+        icon: 'layoutDashboard',
+      },
+      {
+        title: 'Monitoring',
+        href: '/compliance/monitoring',
+        icon: 'activity',
+      },
+      {
+        title: 'Policies',
+        href: '/compliance/policies',
+        icon: 'scroll',
+      },
+      {
+        title: 'Audit Logs',
+        href: '/compliance/audit-logs',
+        icon: 'history',
+      },
+    ],
+  },
+  {
     title: 'Settings',
     href: '/settings',
     icon: 'settings',
