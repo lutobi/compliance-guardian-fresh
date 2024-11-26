@@ -72,6 +72,16 @@ const sidebarNavItems = [
         icon: 'activity',
       },
       {
+        title: 'Tasks',
+        href: '/compliance/tasks',
+        icon: 'check',
+      },
+      {
+        title: 'Reports',
+        href: '/compliance/reports',
+        icon: 'fileText',
+      },
+      {
         title: 'Policies',
         href: '/compliance/policies',
         icon: 'scroll',
@@ -81,27 +91,17 @@ const sidebarNavItems = [
         href: '/compliance/audit-logs',
         icon: 'history',
       },
+      {
+        title: 'Settings',
+        href: '/compliance/settings',
+        icon: 'settings',
+      }
     ],
   },
   {
     title: 'Assessments',
     href: '/assessments',
     icon: 'clipboard',
-  },
-  {
-    title: 'Tasks',
-    href: '/tasks',
-    icon: 'check',
-  },
-  {
-    title: 'Reports',
-    href: '/reports',
-    icon: 'fileText',
-  },
-  {
-    title: 'Settings',
-    href: '/settings',
-    icon: 'settings',
   },
 ]
 
