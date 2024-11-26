@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/select'
 import { uploadEvidence } from '@/lib/api/assessments'
 import { formatDate } from '@/lib/utils'
+import { useToast } from '@/components/ui/use-toast'
 
 interface Evidence {
   id: string
@@ -47,9 +48,10 @@ export function EvidenceList({ controls }: EvidenceListProps) {
   const [selectedControl, setSelectedControl] = useState('')
   const [title, setTitle] = useState('')
   const [file, setFile] = useState<File | null>(null)
+  const { toast } = useToast()
 
-  const uploadMutation = useMutation(
-    async () => {
+  const uploadMutation = useMutation({
+    mutationFn: async () => {
       if (!file || !selectedControl || !title) return
 
       const formData = new FormData()
@@ -59,15 +61,24 @@ export function EvidenceList({ controls }: EvidenceListProps) {
 
       await uploadEvidence(formData)
     },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['assessment', params.id])
-        setTitle('')
-        setFile(null)
-        setSelectedControl('')
-      },
+    onSuccess: () => {
+      queryClient.invalidateQueries(['assessment', params.id])
+      setTitle('')
+      setFile(null)
+      setSelectedControl('')
+      toast({
+        title: 'Success',
+        description: 'Evidence uploaded successfully',
+      })
+    },
+    onError: (error: Error) => {
+      toast({
+        title: 'Error',
+        description: error.message || 'Failed to upload evidence',
+        variant: 'destructive',
+      })
     }
-  )
+  })
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {

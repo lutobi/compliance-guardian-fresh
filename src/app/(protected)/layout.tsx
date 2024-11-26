@@ -25,71 +25,34 @@ export default function ProtectedLayout({
       try {
         const { data: { session } } = await supabase.auth.getSession()
         if (!session) {
-          router.push('/auth/signin')
+          router.push(`/auth/signin?next=${pathname}`)
           return
         }
         setLoading(false)
       } catch (error) {
-        console.error('Auth check failed:', error)
+        console.error('Error checking auth:', error)
         router.push('/auth/signin')
       }
     }
+
     checkAuth()
-  }, [router, supabase.auth])
+  }, [pathname, router, supabase.auth])
 
   if (loading) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <LoadingState message="Loading..." />
-      </div>
-    )
-  }
-
-  // Get the current page title from the pathname
-  const getPageTitle = () => {
-    const path = pathname.split('/')
-    const lastSegment = path[path.length - 1]
-    return lastSegment
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ')
+    return <LoadingState />
   }
 
   return (
-    <div className="flex min-h-screen">
-      {/* Sidebar */}
-      <Sidebar className="w-64 hidden md:flex" />
-      
-      {/* Main content */}
-      <div className="flex-1 flex flex-col min-h-screen">
-        {/* Header */}
-        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <div className="container flex h-14 items-center">
-            <div className="flex items-center gap-4">
-              <MobileNav />
-              <Link
-                href="/"
-                className="flex items-center gap-2 font-semibold hidden md:flex"
-              >
-                <Icons.shield className="h-6 w-6 text-primary" />
-                <span>Compliance Guardian</span>
-              </Link>
-            </div>
-            <div className="flex-1">
-              <h1 className="text-lg font-semibold">{getPageTitle()}</h1>
-            </div>
-          </div>
-        </header>
-
-        {/* Page content */}
-        <main className="flex-1">
-          <div className="container py-6">
-            <ErrorBoundary>
-              {children}
-            </ErrorBoundary>
-          </div>
-        </main>
+    <ErrorBoundary>
+      <div className="flex h-screen overflow-hidden">
+        <Sidebar />
+        <div className="flex-1 overflow-y-auto">
+          <MobileNav />
+          <main className="relative flex-1 p-4 lg:p-8">
+            {children}
+          </main>
+        </div>
       </div>
-    </div>
+    </ErrorBoundary>
   )
 }

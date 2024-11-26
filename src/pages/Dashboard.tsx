@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   ShieldCheckIcon,
-  DocumentSearchIcon,
+  MagnifyingGlassIcon,
   ChartBarIcon,
   ExclamationTriangleIcon,
   ClipboardDocumentCheckIcon,
@@ -87,7 +87,7 @@ export const Dashboard: React.FC = () => {
           <DashboardCard
             title="Compliance Reports"
             description="Generate and view compliance reports"
-            icon={<DocumentSearchIcon className="h-8 w-8 text-purple-600" />}
+            icon={<MagnifyingGlassIcon className="h-8 w-8 text-purple-600" />}
             to="/reports"
             stats={[
               { label: 'Reports Generated', value: 12 },

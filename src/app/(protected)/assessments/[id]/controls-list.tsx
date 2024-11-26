@@ -37,8 +37,10 @@ interface Control {
   status: string
   notes: string | null
   assigned_to: { email: string } | null
+  email: string
   due_date: string | null
   completed_at: string | null
+  updated_at: string
   evidence: Evidence[]
 }
 
@@ -59,12 +61,21 @@ export function ControlsList({ controls, onUpdateControl }: ControlsListProps) {
   const [editingNotes, setEditingNotes] = useState<string | null>(null)
   const [noteText, setNoteText] = useState('')
 
-  const statusColors = {
-    not_started: 'bg-gray-500',
-    in_progress: 'bg-blue-500',
-    implemented: 'bg-green-500',
-    not_applicable: 'bg-gray-300',
-    not_compliant: 'bg-red-500',
+  type StatusColorType = {
+    [key: string]: string;
+    not_started: string;
+    in_progress: string;
+    implemented: string;
+    not_applicable: string;
+    not_compliant: string;
+  }
+
+  const statusColors: StatusColorType = {
+    not_started: 'bg-gray-100 text-gray-800',
+    in_progress: 'bg-blue-100 text-blue-800',
+    implemented: 'bg-green-100 text-green-800',
+    not_applicable: 'bg-yellow-100 text-yellow-800',
+    not_compliant: 'bg-red-100 text-red-800'
   }
 
   const handleStatusChange = async (controlId: string, newStatus: string) => {

@@ -1,7 +1,20 @@
 export type SecuritySeverity = 'critical' | 'high' | 'medium' | 'low' | 'info'
 
-export type AssessmentStatus = 'SCHEDULED' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED'
-export type AssessmentType = 'PENTEST' | 'VULNERABILITY_SCAN'
+export const AssessmentStatus = {
+  SCHEDULED: 'SCHEDULED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type AssessmentStatus = typeof AssessmentStatus[keyof typeof AssessmentStatus]
+
+export const AssessmentType = {
+  PENTEST: 'PENTEST',
+  VULNERABILITY_SCAN: 'VULNERABILITY_SCAN'
+} as const
+
+export type AssessmentType = typeof AssessmentType[keyof typeof AssessmentType]
 
 export interface SecurityAssessment {
   id: string
