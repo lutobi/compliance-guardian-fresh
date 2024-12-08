@@ -19,6 +19,9 @@ import {
   ChevronLeft,
   TrendingUp,
   CloudDownload,
+  GraduationCap,
+  Activity,
+  History,
   type Icon as LucideIcon,
 } from 'lucide-react'
 
@@ -47,4 +50,7 @@ export const Icons = {
   timer: Timer,
   chevronLeft: ChevronLeft,
   trendingUp: TrendingUp,
+  graduationCap: GraduationCap,
+  activity: Activity,
+  history: History,
 }

@@ -1,3 +1,8 @@
+'use client'
+
+import Link from 'next/link'
+import { Icons } from '@/components/ui/icons'
+
 export default function DashboardPage() {
   return (
     <div className="space-y-6">

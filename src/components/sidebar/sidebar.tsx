@@ -23,6 +23,18 @@ const sidebarNavItems = [
     title: 'Frameworks',
     href: '/frameworks',
     icon: 'book',
+    items: [
+      {
+        title: 'Overview',
+        href: '/frameworks',
+        icon: 'book',
+      },
+      {
+        title: 'Learning Center',
+        href: '/frameworks/learn',
+        icon: 'graduationCap',
+      }
+    ]
   },
   {
     title: 'Security',

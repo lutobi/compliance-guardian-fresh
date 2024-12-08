@@ -50,22 +50,16 @@ export interface Evidence {
 }
 
 // Types for initial data
-export interface FrameworkData {
-  name: string
-  version: string
-  description: string
-  controls: ControlData[]
-}
-
-export interface ControlData {
-  name?: string
-  controls?: ControlItemData[]
-}
-
 export interface ControlItemData {
   id: string
   title: string
   description: string
   subControls?: ControlItemData[]
-  controls?: ControlItemData[]
+}
+
+export interface FrameworkData {
+  name: string
+  version: string
+  description: string
+  controls: ControlItemData[]
 }
